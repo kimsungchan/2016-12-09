@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     RadioButton r1,r2,r3;
     ImageView image;
     EditText e1,e2,e3,e4,e5,e6;
-    LinearLayout l;
+    LinearLayout l,l2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         s = (Switch)findViewById(R.id.switch2);
         l = (LinearLayout)findViewById(R.id.linearout);
+        l2 = (LinearLayout)findViewById(R.id.layout3);
         b1 = (Button)findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.button2);
         c = (Chronometer)findViewById(R.id.chronometer3);
@@ -69,12 +70,15 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checckId){
                 if(r1.isChecked()){
                     image.setImageResource(R.drawable.five);
+                    l2.setVisibility(View.VISIBLE);
                 }
                 else if(r2.isChecked()){
                     image.setImageResource(R.drawable.ten);
+                    l2.setVisibility(View.VISIBLE);
                 }
                 else if(r3.isChecked()){
                     image.setImageResource(R.drawable.twenty);
+                    l2.setVisibility(View.VISIBLE);
                 }
             }
         });
