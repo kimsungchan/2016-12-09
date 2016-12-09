@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup rg;
     RadioButton r1,r2,r3;
     ImageView image;
-    EditText e1,e2,e3;
+    EditText e1,e2,e3,e4,e5,e6;
     LinearLayout l;
 
     @Override
@@ -42,9 +43,12 @@ public class MainActivity extends AppCompatActivity {
         r2 = (RadioButton)findViewById(R.id.radioButton5);
         r3 = (RadioButton)findViewById(R.id.radioButton6);
         image = (ImageView)findViewById(R.id.imageView2);
-        e1 = (EditText)findViewById(R.id.editText7);
-        e2 = (EditText)findViewById(R.id.editText8);
-        e3 = (EditText)findViewById(R.id.editText9);
+        e1 = (EditText)findViewById(R.id.editText4);
+        e2 = (EditText)findViewById(R.id.editText5);
+        e3 = (EditText)findViewById(R.id.editText6);
+        e4 = (EditText)findViewById(R.id.editText7);
+        e5 = (EditText)findViewById(R.id.editText8);
+        e6 = (EditText)findViewById(R.id.editText9);
 
          s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
              @Override
@@ -57,16 +61,57 @@ public class MainActivity extends AppCompatActivity {
                  else {
                      l.setVisibility(View.INVISIBLE);
                      c.stop();
+
                  }
              }
          });
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             public void onCheckedChanged(RadioGroup group, int checckId){
                 if(r1.isChecked()){
-
+                    image.setImageResource(R.drawable.five);
+                }
+                else if(r2.isChecked()){
+                    image.setImageResource(R.drawable.ten);
+                }
+                else if(r3.isChecked()){
+                    image.setImageResource(R.drawable.twenty);
                 }
             }
         });
-
+         b1.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 double human = Double.parseDouble(e1.getText().toString());
+                 double halfhuman = Double.parseDouble(e2.getText().toString());
+                 double kid = Double.parseDouble(e3.getText().toString());
+                 double dc = 0;
+                 double result = 0;
+                 double count;
+                 if(r1.isChecked()){
+                     dc = 15000 * human + 12000 * halfhuman + 8000 * kid * 0.05;
+                     result =  (15000 * human + 12000 * halfhuman + 8000 * kid) - dc;
+                     count = human + halfhuman + kid;
+                     e4.setText(Double.toString(count));
+                     e5.setText(Double.toString(dc));
+                     e6.setText(Double.toString(result));
+                 }
+                else if(r2.isChecked()){
+                     dc = 15000 * human + 12000 * halfhuman + 8000 * kid * 0.1;
+                     result =  (15000 * human + 12000 * halfhuman + 8000 * kid) - dc;
+                     count = human + halfhuman + kid;
+                     e4.setText(Double.toString(count));
+                     e5.setText(Double.toString(dc));
+                     e6.setText(Double.toString(result));
+                 }
+                 else if(r3.isChecked()){
+                     dc = 15000 * human + 12000 * halfhuman + 8000 * kid * 0.2;
+                     result =  (15000 * human + 12000 * halfhuman + 8000 * kid) - dc;
+                     count = human + halfhuman + kid;
+                     e4.setText(Double.toString(count));
+                     e5.setText(Double.toString(dc));
+                     e6.setText(Double.toString(result));
+                 }
+             }
+         });
     }
 }
